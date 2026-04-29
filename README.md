@@ -23,8 +23,13 @@ The system was initially designed with LLM-based grading in mind, where the LLM 
 
 Due to the time constraints, fine-tuning of the LLM was not performed and by using the different prompt strategies such as IO, CoT and ToT alongside with the reference image was insufficient as the model like ChatGPT v4.0 and Claude Sonnet v3.5 relied entirely on prompt engineering and reference images without any task-specific adaptation. The method of prompting strategies significantly influenced the grading performance resulting in lower performance. However, LLM used to predict the Efron severity grades remains as the promising direction in future work.
 
-<img src="System_workflow/System_Pipeline_before.png" width="400" style="float: left; margin-right: 10px;"/>
-<img src="System_workflow/System_Pipeline_after.png" width="400" style="float: left;"/>
+<table>
+  <tr>
+    <td><img src="System_workflow/System_Pipeline_before.png" width="450"/></td>
+    <td><img src="System_workflow/System_Pipeline_after.png" width="450"/></td>
+  </tr>
+</table>
+
 
 ---
 
