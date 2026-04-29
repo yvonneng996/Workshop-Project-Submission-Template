@@ -15,15 +15,16 @@
 ---
 
 ## SECTION 1 : PROJECT TITLE
-## <p align="justify">
-Development of an Intelligent Platform for Automated Conjunctival Vessel Segmentation, Efron Severity Classification & LLM-Assisted Clinical Interpretation
+## <p align="justify"> Development of an Intelligent Platform for Automated Conjunctival Vessel Segmentation, Efron Severity Classification & LLM-Assisted Clinical Interpretation
 </p>
 
 ## Section 2 : SYSTEM PIPELINE
 
 <p align="justify">
 The system was initially designed with LLM-based grading in mind, where the LLM would predict the Efron Severity grade by visually comparing the input conjunctival image against reference images across three prompting strategies — Input-Output (IO), Chain-of-Thought (CoT), and Tree-of-Thought (ToT). However, upon evaluation, the LLM grading results were outperformed by the conventional Ordinal Logistic Regression classification model, which achieved a Pearson correlation of 0.934 compared to the best LLM correlation of 0.631 (Claude Sonnet v3.5, CoT). Based on these results, an evidence-based decision was made to repurpose the LLM as a clinical explainer rather than a primary grader which is a more appropriate and clinically valuable use of its capability. Hence the predicted grade from classification model is passed into the LLM to generate a natural language clinical interpretation, management recommendation and follow-up actions for the clinician. 
+</p>
 
+<p align="justify">
 Due to the time constraints, fine-tuning of the LLM was not performed and by using the different prompt strategies such as IO, CoT and ToT alongside with the reference image was insufficient as the model like ChatGPT v4.0 and Claude Sonnet v3.5 relied entirely on prompt engineering and reference images without any task-specific adaptation. The method of prompting strategies significantly influenced the grading performance resulting in lower performance. However, LLM used to predict the Efron severity grades remains as the promising direction in future work.
 </p>
 
