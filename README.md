@@ -39,8 +39,8 @@ The platform integrates three core components. First, a Semi-Supervised Learning
     <td align="right"><strong>Process training SSL Model</strong></td>
   </tr>
   <tr>
-    <td><img src="System_workflow/SSL Model.png" width="450"/></td>
-    <td><img src="System_workflow/Process_training_SSLModel.png" width="450"/></td>
+    <td><img src="System_workflow/SSL_Model.png" width="450"/></td>
+    <td><img src="System_workflow/process_training_SSLModel.png" width="450"/></td>
   </tr>
 </table>
 
