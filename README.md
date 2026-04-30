@@ -18,9 +18,36 @@
 ## <p align="justify"> Development of an Intelligent Platform for Automated Conjunctival Vessel Segmentation, Efron Severity Classification & LLM-Assisted Clinical Interpretation
 </p>
 
-## Section 2 : SYSTEM PIPELINE
+## Section 2 : PROJECT SUMMARY
 
 <p align="justify">
+This project presents an end-to-end automated platform for conjunctival hyperaemia Efron severity grading, where conjunctival vessels are extracted automatically through a Semi-Supervised Learning segmentation model, severity is classified using Ordinal Logistic Regression, and clinical interpretation is generated automatically via a Large Language Model — all integrated into a single clinician-friendly Streamlit interface accessible to any clinician without requiring technical expertise.
+</p>
+
+<p align="justify">
+Conjunctival hyperaemia is the redness of the white part of the eye which is a key clinical indicator of dry eye disease severity. Current grading practice relies on manual visual assessment by clinicians using the Efron grading scale (Grade 0 to Grade 4) , which is highly subjective and prone to inter-observer variability. This project addresses this gap by developing an intelligent platform that automates the entire grading pipeline and extraction of the vascular structure, reducing inter-observer variability, supporting faster diagnostic decisions and improving consistency in conjunctival hyperaemia grading in real-world ophthalmology settings.
+</p>
+
+## Section 3 : SYSTEM PIPELINE
+
+<p align="justify">
+The platform integrates three core components. First, a Semi-Supervised Learning (SSL) segmentation model based on a cross-teaching framework between UNet and Swin-UNet extracts conjunctival vascular structure from slit-lamp images, achieving an IoU of 0.522 with limited annotated data. The process begins with the original conjunctival slit-lamp image which undergoes Contrast Limited Adaptive Histogram Equalization (CLAHE) to enhance image contrast and improve vessel visibility. A conjunctival mask is then applied to isolate the region of interest. The masked image is then divided into 256×256 pixel patches using a sliding window approach with 50% overlap, generating both image patches and their corresponding binary vessel label patches. These patches are fed into the SSL segmentation model, which produces predicted binary vessel masks for each patch. uring inference, the best saved model is loaded and applied to the unseen image patches to produce predicted binary vessel masks for each patch. The predicted patches then undergo post-processing before being stitched back together to reconstruct the full binary vessel mask at the original image resolution of 1280×980 pixels. The reconstructed vessel mask is subsequently used to calculate the vessel density value, which is then used to generate a correlation plot of vessel density against the mean Efron severity grade for evaluation. A key advantage of the SSL approach is that the segmentation pipeline is fully automated — once trained, the model is capable of extracting conjunctival vessel structures directly from raw slit-lamp images without requiring any manual annotation or expert labelling, making it highly scalable and practical for real-world clinical deployment where annotated data is scarce and expensive to obtain. 
+
+<table>
+  <tr>
+    <td align="left"><strong>SSL Model</strong></td>
+    <td align="right"><strong>Process training SSL Model</strong></td>
+  </tr>
+  <tr>
+    <td><img src="System_workflow/SSL Model.png" width="450"/></td>
+    <td><img src="System_workflow/Process_training_SSLModel.png" width="450"/></td>
+  </tr>
+</table>
+
+Second, an Ordinal Logistic Regression classification model maps the extracted vessel density to an Efron severity grade, achieving an overall accuracy of 78.1% and a Pearson correlation of 0.934 on 32 unseen test images — surpassing the clinician ground truth benchmark of 0.854. Third, Claude Sonnet v3.5 via AWS Bedrock is integrated as a clinical explainer, where the predicted grade and vessel density are passed into the Large Language Model (LLM) to generate a natural language clinical interpretation, management recommendation, lifestyle advice, follow-up actions and red flags for the clinician.
+
+
+
 The system was initially designed with LLM-based grading in mind, where the LLM would predict the Efron Severity grade by visually comparing the input conjunctival image against reference images across three prompting strategies — Input-Output (IO), Chain-of-Thought (CoT), and Tree-of-Thought (ToT). However, upon evaluation, the LLM grading results were outperformed by the conventional Ordinal Logistic Regression classification model, which achieved a Pearson correlation of 0.934 compared to the best LLM correlation of 0.631 (Claude Sonnet v3.5, CoT). Based on these results, an evidence-based decision was made to repurpose the LLM as a clinical explainer rather than a primary grader which is a more appropriate and clinically valuable use of its capability. Hence the predicted grade from classification model is passed into the LLM to generate a natural language clinical interpretation, management recommendation and follow-up actions for the clinician. 
 </p>
 
