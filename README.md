@@ -84,14 +84,16 @@ between predicted vessel density and model-predicted grades compared to clinicia
   </tr>
 </table>
 
-### 3.2 LLM Model
+### 3.3 LLM-Assisted Clinical Explanation
 
 <p align="justify">
-Third, Claude Sonnet v3.5 via AWS Bedrock is integrated as a clinical explainer, where the predicted grade and vessel density are passed into the Large Language Model (LLM) to generate a natural language clinical interpretation, management recommendation, lifestyle advice, follow-up actions and red flags for the clinician.
+The system was initially designed with LLM-based grading in mind, where the two multimodal LLM — ChatGPT v4.0 and Claude Sonnet v3.5 were evaluated for their ability to predict the Efron Severity grade by visually comparing the input conjunctival image against reference images across three prompting strategies — Input-Output (IO), Chain-of-Thought (CoT), and Tree-of-Thought (ToT). However, upon evaluation, the LLM grading results were outperformed by the conventional Ordinal Logistic Regression classification model, which achieved a Pearson correlation of 0.934 compared to the best LLM correlation of 0.631 (Claude Sonnet v3.5, CoT). 
 </p>
 
-
-The system was initially designed with LLM-based grading in mind, where the LLM would predict the Efron Severity grade by visually comparing the input conjunctival image against reference images across three prompting strategies — Input-Output (IO), Chain-of-Thought (CoT), and Tree-of-Thought (ToT). However, upon evaluation, the LLM grading results were outperformed by the conventional Ordinal Logistic Regression classification model, which achieved a Pearson correlation of 0.934 compared to the best LLM correlation of 0.631 (Claude Sonnet v3.5, CoT). Based on these results, an evidence-based decision was made to repurpose the LLM as a clinical explainer rather than a primary grader which is a more appropriate and clinically valuable use of its capability. Hence the predicted grade from classification model is passed into the LLM to generate a natural language clinical interpretation, management recommendation and follow-up actions for the clinician. 
+<p align="justify">
+Based on these results, an evidence-based decision was made to repurpose the LLM as a clinical explainer rather than a primary grader, which is a more appropriate and clinically valuable use of its capability. In the final pipeline, Claude Sonnet v3.5 via API key is integrated as the 
+clinical explainer, where the predicted Efron severity grade from Ordinal Logistic Regression classification model and the corresponding vessel density value are passed into the LLM  together with structured prompt. LLM then generates a natural language clinical report covering the clinical interpretation of the predicted grade, management recommendations, lifestyle advice for the patient, recommended follow-up actions and red flags for the clinician should watch out for. This transforms the system from a simple classifier into an interactive clinical decision support tool, providing clinicians with a complete and actionable grading report without 
+requiring any manual interpretation. Nevertheless, the use of LLMs to predict Efron severity grades remains a promising direction for future work, particularly with domain-specific fine-tuning on annotated conjunctival grading datasets.
 </p>
 
 <p align="justify">
