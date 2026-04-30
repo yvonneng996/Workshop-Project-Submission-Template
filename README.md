@@ -31,7 +31,7 @@ Conjunctival hyperaemia is the redness of the white part of the eye which is a k
 <table>
   <tr>
     <td align="center"><strong>Images</strong></td>
-    <td align="center"><strong>Reference Images for Efron severity gtading</strong></td>
+    <td align="center"><strong>Reference Images for Efron severity grading</strong></td>
   </tr>
   <tr>
     <td><img src="System_workflow/images.png" width="450"/></td>
@@ -76,7 +76,8 @@ between predicted vessel density and model-predicted grades compared to clinicia
     <td align="center"><strong>Process training Ordinal Logistic Regression Classification Model</strong></td>
   </tr>
   <tr>
-    <td><img src="System_workflow/SSLModel.png" width="450"/></td>
+    <td align="center">
+      <img src="System_workflow/OLRModel.png" width="450"/></td>
   </tr>
 </table>
 
