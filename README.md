@@ -71,16 +71,22 @@ that the model has learned a highly consistent and systematic mapping between ve
 between predicted vessel density and model-predicted grades compared to clinician grades further validates the use of vessel density as a reliable and objective biomarker for Efron severity classification. 
 </p>
 
-<table>
+<table align="center">
   <tr>
-    <td align="center"><strong>Process training Ordinal Logistic Regression Classification Model</strong></td>
+    <td align="center">
+      <strong>Process training Ordinal Logistic Regression Classification Model</strong>
+    </td>
   </tr>
   <tr>
     <td align="center">
-      <img src="System_workflow/OLRModel.png" width="450"/></td>
+      <img src="System_workflow/OLRModel.png" width="450"/>
+    </td>
   </tr>
 </table>
 
+### 3.2 LLM Model
+
+<p align="justify">
 Third, Claude Sonnet v3.5 via AWS Bedrock is integrated as a clinical explainer, where the predicted grade and vessel density are passed into the Large Language Model (LLM) to generate a natural language clinical interpretation, management recommendation, lifestyle advice, follow-up actions and red flags for the clinician.
 </p>
 
