@@ -148,13 +148,14 @@ conda list
 ```bash
 streamlit run -file directory/project_mtech.py
 ```
+img src="System_workflow/code_to_run_streamlit.png" width="400" style="float: left; margin-right: 10px;"/>
 
 ### Streamlit Interface Usage
 
-1) Upload a conjunctival slit-lamp image
-2) Upload a conjunctival binary mask
-3) Click on "Segmentation Process"
-4) Output will show the extracted vessel, vessel density value, predicted Efron severity grade, LLM-generated clinical report
+1) Upload a conjunctival slit-lamp image. Click "Upload Image 1" & "Browse files"
+2) Upload a conjunctival binary mask. Click "Upload Image 2" & " Browse files"
+3) Generate Output. Click on "Segmentation Process"
+4) Output will show the extracted vessel mask, vessel density value, predicted Efron severity grade, LLM-generated clinical report
 
 ---
 ## SECTION 6 : PROJECT REPORT
@@ -174,15 +175,6 @@ streamlit run -file directory/project_mtech.py
 - Appendix of report: Installation and User Guide
 - Appendix of report: List of Abbreviations (if applicable)
 - Appendix of report: References (if applicable)
-
----
-## SECTION 7 : MISCELLANEOUS
-
-`Refer to Github Folder: Miscellaneous`
-
-### HDB_BTO_SURVEY.xlsx
-* Results of survey
-* Insights derived, which were subsequently used in our system
 
 ---
 
