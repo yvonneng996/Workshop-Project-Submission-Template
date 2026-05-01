@@ -126,10 +126,27 @@ Due to the time constraints, fine-tuning of the LLM was not performed and by usi
 
 ### Installation of the packages
 
-**Step 1 — Clone the repository**
+**Step 1 — Clone the repository using Command Prompt**
 ```bash
 git clone https://github.com/yvonneng996/Automation-of-Conjunctival-Project-Pipeline.git
+```
+**Step 2 — Change File directory in Command Prompt**
+```bash
 cd Automation-of-Conjunctival-Project-Pipeline
+```
+**Step 3 — Create and activate conda environment via Anaconda Prompt**
+```bash
+conda env create -f environment.yml
+conda activate test
+```
+**Step 4 — Verify installation**
+```bash
+conda list
+```
+### Running the Streamlit Application
+**Step 5 — Run the Streamlit interface via Anaconda Prompt**
+```bash
+streamlit run -file directory/project_mtech.py
 ```
 
 > start iss-vm
