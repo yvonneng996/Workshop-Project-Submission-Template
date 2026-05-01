@@ -136,7 +136,11 @@ conda list
 ```bash
 streamlit run -file directory/project_mtech.py
 ```
-img src="System_workflow/code_to_run_streamlit.png" width="400" style="float: left; margin-right: 10px;"/>
+<table>
+  <tr>
+    <td><img src="System_workflow/code_to_run_streamlitore.png" width="450"/></td>
+     </tr>
+</table>
 
 ### Streamlit Interface Usage
 
