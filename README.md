@@ -122,11 +122,15 @@ Due to the time constraints, fine-tuning of the LLM was not performed and by usi
 
 ## SECTION 5 : USER GUIDE
 
-`Refer to appendix <Installation & User Guide> in project report at Github Folder: ProjectReport`
+`Refer to appendix <Installation & User Guide> in project report at Github Folder: Project Report`
 
-### [ 1 ] To run the system using iss-vm
+### Installation of the packages
 
-> download pre-built virtual machine from http://bit.ly/iss-vm
+**Step 1 — Clone the repository**
+```bash
+git clone https://github.com/yvonneng996/Automation-of-Conjunctival-Project-Pipeline.git
+cd Automation-of-Conjunctival-Project-Pipeline
+```
 
 > start iss-vm
 
