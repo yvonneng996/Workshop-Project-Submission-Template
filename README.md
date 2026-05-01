@@ -110,8 +110,6 @@ Due to the time constraints, fine-tuning of the LLM was not performed and by usi
 
 ## SECTION 5 : USER GUIDE
 
-`Refer to appendix <Installation & User Guide> in project report at Github Folder: Project Report`
-
 ### Installation of the packages
 
 **Step 1 — Clone the repository using Command Prompt**
