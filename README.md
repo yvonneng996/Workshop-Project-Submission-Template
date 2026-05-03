@@ -78,7 +78,7 @@ between predicted vessel density and model-predicted grades compared to clinicia
 ### 3.3 LLM-Assisted Clinical Explanation
 
 <p align="justify">
-The system was initially designed with LLM-based grading in mind, where the two multimodal LLMs — ChatGPT v4.0 and Claude Sonnet v4.6 were evaluated for their ability to predict the Efron Severity grade by visually comparing the input conjunctival image against reference images across three prompting strategies — Input-Output (IO), Chain-of-Thought (CoT), and Tree-of-Thought (ToT) and a combination of all prompts. However, upon evaluation, the LLM grading results were outperformed by the conventional Ordinal Logistic Regression classification model, which achieved a Pearson correlation of 0.934 compared to the best LLM correlation of 0.631 (Claude Sonnet v4.6, CoT). 
+The system was initially designed with LLM-based grading in mind, where the two multimodal LLMs — ChatGPT v4.0 and Claude Sonnet v4.6 were evaluated for their ability to predict the Efron Severity grade by visually comparing the input conjunctival image against reference images across four prompting strategies — Input-Output (IO), Chain-of-Thought (CoT), and Tree-of-Thought (ToT) and a combination of all prompts. However, upon evaluation, the LLM grading results were outperformed by the conventional Ordinal Logistic Regression classification model, which achieved a Pearson correlation of 0.934 compared to the best LLM correlation of 0.631 (Claude Sonnet v4.6, CoT). 
 </p>
 
 <p align="justify">
