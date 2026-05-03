@@ -36,7 +36,7 @@ Conjunctival hyperaemia is the redness of the white part of the eye which is a k
 ### 3.1 Semi-Supervised Learning (SSL) Segmentation
 
 <p align="justify">
-The platform integrates three core components. First, a Semi-Supervised Learning (SSL) segmentation model based on a cross-teaching framework between UNet and Swin-UNet extracts conjunctival vascular structure from slit-lamp images, achieving an IoU of 0.522 with limited annotated data. The process begins with the original conjunctival slit-lamp image which undergoes Contrast Limited Adaptive Histogram Equalization (CLAHE) to enhance image contrast and improve vessel visibility. A conjunctival mask is then applied to isolate the region of interest. The masked image is then divided into 256×256 pixel patches using a sliding window approach with 50% overlap, generating both image patches and their corresponding binary vessel label patches. These patches are fed into the SSL segmentation model, which produces predicted binary vessel masks for each patch. uring inference, the best saved model is loaded and applied to the unseen image patches to produce predicted binary vessel masks for each patch. The predicted patches then undergo post-processing before being stitched back together to reconstruct the full binary vessel mask at the original image resolution of 1280×980 pixels. The reconstructed vessel mask is subsequently used to calculate the vessel density value, which is then used to generate a correlation plot of vessel density against the mean Efron severity grade for evaluation. A key advantage of the SSL approach is that the segmentation pipeline is fully automated — once trained, the model is capable of extracting conjunctival vessel structures directly from raw slit-lamp images without requiring any manual annotation or expert labelling, making it highly scalable and practical for real-world clinical deployment where annotated data is scarce and expensive to obtain. 
+The platform integrates three core components. First, a Semi-Supervised Learning (SSL) segmentation model based on a cross-teaching framework between UNet and Swin-UNet extracts conjunctival vascular structure from slit-lamp images, achieving an IoU of 0.522 with limited annotated data. The process begins with the original conjunctival slit-lamp image which undergoes Contrast Limited Adaptive Histogram Equalization (CLAHE) to enhance image contrast and improve vessel visibility. A conjunctival mask is then applied to isolate the region of interest. The masked image is then divided into 256×256 pixel patches using a sliding window approach with 50% overlap, generating both image patches and their corresponding binary vessel label patches. These patches are fed into the SSL segmentation model, which produces predicted binary vessel masks for each patch. During inference, the best saved model is loaded and applied to the unseen image patches to produce predicted binary vessel masks for each patch. The predicted patches then undergo post-processing before being stitched back together to reconstruct the full binary vessel mask at the original image resolution of 1280×980 pixels. The reconstructed vessel mask is subsequently used to calculate the vessel density value, which is then used to generate a correlation plot of vessel density against the mean Efron severity grade for evaluation. A key advantage of the SSL approach is that the segmentation pipeline is fully automated — once trained, the model is capable of extracting conjunctival vessel structures directly from raw slit-lamp images without requiring any manual annotation or expert labelling, making it highly scalable and practical for real-world clinical deployment where annotated data is scarce and expensive to obtain. 
 </p>
 
 <table>
@@ -78,17 +78,17 @@ between predicted vessel density and model-predicted grades compared to clinicia
 ### 3.3 LLM-Assisted Clinical Explanation
 
 <p align="justify">
-The system was initially designed with LLM-based grading in mind, where the two multimodal LLM — ChatGPT v4.0 and Claude Sonnet v4.6 were evaluated for their ability to predict the Efron Severity grade by visually comparing the input conjunctival image against reference images across three prompting strategies — Input-Output (IO), Chain-of-Thought (CoT), and Tree-of-Thought (ToT). However, upon evaluation, the LLM grading results were outperformed by the conventional Ordinal Logistic Regression classification model, which achieved a Pearson correlation of 0.934 compared to the best LLM correlation of 0.631 (Claude Sonnet v4.6, CoT). 
+The system was initially designed with LLM-based grading in mind, where the two multimodal LLMs — ChatGPT v4.0 and Claude Sonnet v4.6 were evaluated for their ability to predict the Efron Severity grade by visually comparing the input conjunctival image against reference images across three prompting strategies — Input-Output (IO), Chain-of-Thought (CoT), and Tree-of-Thought (ToT) and combination of all prompts. However, upon evaluation, the LLM grading results were outperformed by the conventional Ordinal Logistic Regression classification model, which achieved a Pearson correlation of 0.934 compared to the best LLM correlation of 0.631 (Claude Sonnet v4.6, CoT). 
 </p>
 
 <p align="justify">
 Based on these results, an evidence-based decision was made to repurpose the LLM as a clinical explainer rather than a primary grader, which is a more appropriate and clinically valuable use of its capability. In the final pipeline, Claude Sonnet v4.6 via API key is integrated as the 
-clinical explainer, where the predicted Efron severity grade from Ordinal Logistic Regression classification model and the corresponding vessel density value are passed into the LLM  together with structured prompt. LLM then generates a natural language clinical report covering the clinical interpretation of the predicted grade, management recommendations, lifestyle advice for the patient, recommended follow-up actions and red flags for the clinician should watch out for. This transforms the system from a simple classifier into an interactive clinical decision support tool, providing clinicians with a complete and actionable grading report without 
+clinical explainer, where the predicted Efron severity grade from Ordinal Logistic Regression classification model and the corresponding vessel density value are passed into the LLM  together with structured prompt. The LLM then generates a natural language clinical report covering the clinical interpretation of the predicted grade, management recommendations, lifestyle advice for the patient, recommended follow-up actions and red flags that the clinician should watch out for. This transforms the system from a simple classifier into an interactive clinical decision support tool, providing clinicians with a complete and actionable grading report without 
 requiring any manual interpretation. Nevertheless, the use of LLMs to predict Efron severity grades remains a promising direction for future work, particularly with domain-specific fine-tuning on annotated conjunctival grading datasets.
 </p>
 
 <p align="justify">
-Due to time constraints, fine-tuning of the LLM was not performed and by using the different prompt strategies such as IO, CoT and ToT alongside the reference image was insufficient as the models like ChatGPT v4.0 and Claude Sonnet v4.6 relied entirely on prompt engineering and reference images without any task-specific adaptation. The method of prompting strategies significantly influenced the grading performance resulting in lower performance. However, using LLMs to predict Efron severity grades remains a promising direction.
+Due to time constraints, fine-tuning of the LLM was not performed and the use of different prompting strategies such as IO, CoT and ToT alongside reference images was insufficient as the models like ChatGPT v4.0 and Claude Sonnet v4.6 relied entirely on prompt engineering and reference images without any task-specific adaptation. The method of prompting strategies significantly influenced the grading performance resulting in lower performance. However, using LLMs to predict Efron severity grades remains a promising direction.
 </p>
 
 <table>
@@ -104,7 +104,7 @@ Due to time constraints, fine-tuning of the LLM was not performed and by using t
 
 | Official Full Name  | Student ID (MTech Applicable)  | Work Items (Who Did What) | Email (Optional) |
 | :------------ |:---------------:| :-----| :-----|
-| Yvonne Ng Bei Zhen | A0339813X | All parts of the project were completely independently| yvonne.ng.b.z@u.nus.edu.sg |
+| Yvonne Ng Bei Zhen | A0339813X | All parts of the project were completed independently| yvonne.ng.b.z@u.nus.edu.sg |
 
 ---
 
@@ -132,7 +132,7 @@ conda list
 ### Running the Streamlit Application
 **Step 5 — Run the Streamlit interface via Anaconda Prompt**
 ```bash
-streamlit run -file directory/project_mtech.py
+streamlit run -file directory/Automation-of-Conjunctival-Project-Pipeline/project_mtech.py
 ```
 <table>
   <tr>
