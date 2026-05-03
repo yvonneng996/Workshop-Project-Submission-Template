@@ -118,7 +118,7 @@ git clone https://github.com/yvonneng996/Automation-of-Conjunctival-Project-Pipe
 ```
 **Step 2 — Change File directory in Command Prompt**
 ```bash
-cd Automation-of-Conjunctival-Project-Pipeline
+cd Automation-of-Conjunctival-Project-Pipeline\project_mtech\Streamlit_interface
 ```
 **Step 3 — Create and activate conda environment via Anaconda Prompt**
 ```bash
@@ -132,7 +132,7 @@ conda list
 ### Running the Streamlit Application
 **Step 5 — Run the Streamlit interface via Anaconda Prompt**
 ```bash
-streamlit run -file directory/Automation-of-Conjunctival-Project-Pipeline/project_mtech.py
+streamlit run -file directory/project_mtech.py
 ```
 <table>
   <tr>
