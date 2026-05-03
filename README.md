@@ -11,7 +11,7 @@
 ## Section 2 : PROJECT SUMMARY
 
 <p align="justify">
-This project presents an end-to-end automated platform for conjunctival hyperaemia Efron severity grading, where conjunctival vessels are extracted automatically through a Semi-Supervised Learning segmentation model, severity is classified using Ordinal Logistic Regression, and clinical interpretation is generated automatically via a Large Language Model — all integrated into a single clinician-friendly Streamlit interface accessible to any clinician without requiring technical expertise.
+This project presents an end-to-end automated platform for conjunctival hyperaemia Efron severity grading, where conjunctival vessels are extracted automatically through a Semi-Supervised Learning segmentation model, the severity is classified using Ordinal Logistic Regression, and clinical interpretation is generated automatically via a Large Language Model — all integrated into a single clinician-friendly Streamlit interface accessible to any clinician without requiring technical expertise.
 </p>
 
 <p align="justify">
@@ -54,10 +54,10 @@ The platform integrates three core components. First, a Semi-Supervised Learning
 
 <p align="justify">
 Second, an Ordinal Logistic Regression classification model maps the extracted vessel density to an Efron severity grade. Ordinal Logistic Regression was selected as the classification model as it is specifically designed for ordered categorical outcomes, explicitly respecting the 
-natural ordering of the Efron severity scale from Grade 0 to Grade 4, unlike standard multiclass classification models such as Support Vector Machine, Random Forest and K-Nearest Neighbours which treat each grade as an independent unordered category. The model was trained on a dataset 
+natural ordering of the Efron severity scale from Grade 0 to Grade 4, unlike standard multiclass classification models such as Support Vector Machine, Random Forest and Decision Tree which treat each grade as an independent unordered category. The model was trained on a dataset 
 of 633 images with balanced class weighting applied to account for the unequal distribution of samples across severity grades and evaluated on a separate held-out test set of 32 unseen images.
 
-The model achieved an overall accuracy of 78.1% and a Pearson correlation of 0.934 between the predicted vessel density and the model-predicted Efron severity grades on the 32 unseen test images, surpassing the clinician ground truth benchmark correlation of 0.854. This suggests 
+The model achieved an overall accuracy of 0.781 and a Pearson correlation of 0.934 between the predicted vessel density and the model-predicted Efron severity grades on the 32 unseen test images, surpassing the clinician ground truth benchmark correlation of 0.854. This suggests 
 that the model has learned a highly consistent and systematic mapping between vessel density and Efron severity grade — one that is more internally consistent than human grading which is naturally subject to subjective inter-observer variability. The higher correlation observed 
 between predicted vessel density and model-predicted grades compared to clinician grades further validates the use of vessel density as a reliable and objective biomarker for Efron severity classification. 
 </p>
@@ -78,17 +78,17 @@ between predicted vessel density and model-predicted grades compared to clinicia
 ### 3.3 LLM-Assisted Clinical Explanation
 
 <p align="justify">
-The system was initially designed with LLM-based grading in mind, where the two multimodal LLM — ChatGPT v4.0 and Claude Sonnet v3.5 were evaluated for their ability to predict the Efron Severity grade by visually comparing the input conjunctival image against reference images across three prompting strategies — Input-Output (IO), Chain-of-Thought (CoT), and Tree-of-Thought (ToT). However, upon evaluation, the LLM grading results were outperformed by the conventional Ordinal Logistic Regression classification model, which achieved a Pearson correlation of 0.934 compared to the best LLM correlation of 0.631 (Claude Sonnet v3.5, CoT). 
+The system was initially designed with LLM-based grading in mind, where the two multimodal LLM — ChatGPT v4.0 and Claude Sonnet v4.6 were evaluated for their ability to predict the Efron Severity grade by visually comparing the input conjunctival image against reference images across three prompting strategies — Input-Output (IO), Chain-of-Thought (CoT), and Tree-of-Thought (ToT). However, upon evaluation, the LLM grading results were outperformed by the conventional Ordinal Logistic Regression classification model, which achieved a Pearson correlation of 0.934 compared to the best LLM correlation of 0.631 (Claude Sonnet v4.6, CoT). 
 </p>
 
 <p align="justify">
-Based on these results, an evidence-based decision was made to repurpose the LLM as a clinical explainer rather than a primary grader, which is a more appropriate and clinically valuable use of its capability. In the final pipeline, Claude Sonnet v3.5 via API key is integrated as the 
+Based on these results, an evidence-based decision was made to repurpose the LLM as a clinical explainer rather than a primary grader, which is a more appropriate and clinically valuable use of its capability. In the final pipeline, Claude Sonnet v4.6 via API key is integrated as the 
 clinical explainer, where the predicted Efron severity grade from Ordinal Logistic Regression classification model and the corresponding vessel density value are passed into the LLM  together with structured prompt. LLM then generates a natural language clinical report covering the clinical interpretation of the predicted grade, management recommendations, lifestyle advice for the patient, recommended follow-up actions and red flags for the clinician should watch out for. This transforms the system from a simple classifier into an interactive clinical decision support tool, providing clinicians with a complete and actionable grading report without 
 requiring any manual interpretation. Nevertheless, the use of LLMs to predict Efron severity grades remains a promising direction for future work, particularly with domain-specific fine-tuning on annotated conjunctival grading datasets.
 </p>
 
 <p align="justify">
-Due to the time constraints, fine-tuning of the LLM was not performed and by using the different prompt strategies such as IO, CoT and ToT alongside with the reference image was insufficient as the model like ChatGPT v4.0 and Claude Sonnet v3.5 relied entirely on prompt engineering and reference images without any task-specific adaptation. The method of prompting strategies significantly influenced the grading performance resulting in lower performance. However, LLM used to predict the Efron severity grades remains as the promising direction in future work.
+Due to time constraints, fine-tuning of the LLM was not performed and by using the different prompt strategies such as IO, CoT and ToT alongside the reference image was insufficient as the models like ChatGPT v4.0 and Claude Sonnet v4.6 relied entirely on prompt engineering and reference images without any task-specific adaptation. The method of prompting strategies significantly influenced the grading performance resulting in lower performance. However, using LLMs to predict Efron severity grades remains a promising direction.
 </p>
 
 <table>
@@ -104,7 +104,7 @@ Due to the time constraints, fine-tuning of the LLM was not performed and by usi
 
 | Official Full Name  | Student ID (MTech Applicable)  | Work Items (Who Did What) | Email (Optional) |
 | :------------ |:---------------:| :-----| :-----|
-| Yvonne Ng Bei Zhen | A0339813X | All parts of the project are completely alone| yvonne.ng.b.z@u.nus.edu.sg |
+| Yvonne Ng Bei Zhen | A0339813X | All parts of the project were completely independently| yvonne.ng.b.z@u.nus.edu.sg |
 
 ---
 
